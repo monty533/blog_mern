@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Doughnut } from "react-chartjs-2";
 import axios from "axios";
+import { BACKEND_APP_URL } from "../../App";
 
 ChartJS.register(
     CategoryScale,
@@ -29,7 +30,7 @@ const Chart = () => {
     useEffect(() => {
         const fetchMyBlogs = async () => {
             const { data } = await axios.get(
-                "http://localhost:4000/api/v1/blog/myblogs",
+                `${BACKEND_APP_URL}/api/v1/blog/myblogs`,
                 { withCredentials: true }
             );
             setMyBlogs(data.blogs);

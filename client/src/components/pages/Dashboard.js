@@ -6,6 +6,7 @@ import CreateBlog from "../miniComponents/CreateBlog";
 import Chart from "../miniComponents/Chart";
 import { Context } from "../../index";
 import { Navigate } from "react-router-dom";
+
 const Dashboard = () => {
     const [component, setComponent] = useState("MyBlogs");
     const { mode, isAuthenticated } = useContext(Context);

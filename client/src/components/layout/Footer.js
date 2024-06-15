@@ -3,9 +3,10 @@ import { Link, useLocation } from "react-router-dom";
 import { AiFillInstagram, AiFillYoutube, AiFillLinkedin } from "react-icons/ai";
 import { FaGitSquare } from "react-icons/fa";
 import { Context } from "../../index";
+import { REACT_APP_URL } from "../../App";
 
 const Footer = () => {
-    const isDashboard = useLocation("http://localhost:5173/dashboard");
+    const isDashboard = useLocation(`${REACT_APP_URL}/dashboard`);
     const { mode } = useContext(Context);
 
     return (

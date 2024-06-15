@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import toast from "react-hot-toast";
+import { BACKEND_APP_URL } from "../../App";
 
 const CreateBlog = () => {
     const [category, setCategory] = useState("");
@@ -94,10 +95,10 @@ const CreateBlog = () => {
         if (paraThreeImage) {
             formData.append("paraThreeImage", paraThreeImage);
         }
-        
+
         try {
             const { data } = await axios.post(
-                "http://localhost:4000/api/v1/blog/post",
+                `${BACKEND_APP_URL}/api/v1/blog/post`,
                 formData,
                 {
                     withCredentials: true,

@@ -16,6 +16,11 @@ import { Context } from "./index";
 import axios from "axios";
 import UpdateBlog from "./components/pages/UpdateBlog";
 
+// This is whole website when on production on render
+export const REACT_APP_URL = process.env.REACT_URL || "http://localhost:3000"
+export const BACKEND_APP_URL = process.env.BACKEND_URL || "http://localhost:4000"
+// end
+console.log('BACKEND_APP_URL', BACKEND_APP_URL);
 const App = () => {
   const { setUser, setIsAuthenticated, setBlogs } =
     useContext(Context);
@@ -23,7 +28,7 @@ const App = () => {
     const fetchUser = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/user/myprofile",
+          `${BACKEND_APP_URL}/api/v1/user/myprofile`,
           {
             withCredentials: true,
           }
@@ -39,7 +44,7 @@ const App = () => {
     const fetchBlogs = async () => {
       try {
         const { data } = await axios.get(
-          "http://localhost:4000/api/v1/blog/all",
+          `${BACKEND_APP_URL}/api/v1/blog/all`,
           { withCredentials: true }
         );
         setBlogs(data.allBlogs);

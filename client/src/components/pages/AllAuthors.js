@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../index";
 import axios from "axios";
 import { BeatLoader } from "react-spinners";
+import { BACKEND_APP_URL } from "../../App";
 
 const AllAuthors = () => {
     const [authors, setAuthors] = useState([]);
@@ -9,7 +10,7 @@ const AllAuthors = () => {
     useEffect(() => {
         const fetchAuthors = async () => {
             const { data } = await axios.get(
-                "http://localhost:4000/api/v1/user/authors",
+                `${BACKEND_APP_URL}/api/v1/user/authors`,
                 { withCredentials: true }
             );
             setAuthors(data.authors);

@@ -3,6 +3,7 @@ import React, { useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useParams } from "react-router-dom";
 import { Context } from "../../index";
+import { BACKEND_APP_URL } from "../../App";
 
 const UpdateBlog = () => {
     const { id } = useParams();
@@ -66,7 +67,7 @@ const UpdateBlog = () => {
         const fetchBlog = async () => {
             try {
                 const { data } = await axios.get(
-                    `http://localhost:4000/api/v1/blog/singleblog/${id}`,
+                    `${BACKEND_APP_URL}/api/v1/blog/singleblog/${id}`,
                     { withCredentials: true }
                 );
                 setTitle(data.blog.title);
@@ -140,7 +141,7 @@ const UpdateBlog = () => {
 
         try {
             const { data } = await axios.put(
-                `http://localhost:4000/api/v1/blog/update/${id}`,
+                `${BACKEND_APP_URL}/api/v1/blog/update/${id}`,
                 updatedBlog,
                 {
                     withCredentials: true,

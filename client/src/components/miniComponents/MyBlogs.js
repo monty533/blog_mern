@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
+import { BACKEND_APP_URL } from "../../App";
 
 const MyBlogs = () => {
     const [myBlogs, setMyBlogs] = useState([]);
@@ -10,7 +11,7 @@ const MyBlogs = () => {
     useEffect(() => {
         const fetchMyBlogs = async () => {
             const { data } = await axios.get(
-                "http://localhost:4000/api/v1/blog/myblogs",
+                `${BACKEND_APP_URL}/api/v1/blog/myblogs`,
                 { withCredentials: true }
             );
             setMyBlogs(data.blogs);
@@ -20,7 +21,7 @@ const MyBlogs = () => {
 
     const deleteBlogHandler = async (id) => {
         await axios
-            .delete(`http://localhost:4000/api/v1/blog/delete/${id}`, {
+            .delete(`${BACKEND_APP_URL}/api/v1/blog/delete/${id}`, {
                 withCredentials: true,
             })
             .then((res) => {

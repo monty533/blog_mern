@@ -1,13 +1,14 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { BeatLoader } from "react-spinners";
+import { BACKEND_APP_URL } from "../../App";
 
 const PopularAuthors = () => {
     const [authors, setAuthors] = useState([]);
     useEffect(() => {
         const fetchAuthors = async () => {
             const { data } = await axios.get(
-                "http://localhost:4000/api/v1/user/authors",
+                `${BACKEND_APP_URL}/api/v1/user/authors`,
                 { withCredentials: true }
             );
             setAuthors(data.authors);

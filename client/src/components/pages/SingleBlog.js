@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../../index";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import { BACKEND_APP_URL } from "../../App";
 
 const SingleBlog = () => {
     const { mode } = useContext(Context);
@@ -11,7 +12,7 @@ const SingleBlog = () => {
         const getSingleBlog = async () => {
             try {
                 const { data } = await axios.get(
-                    `http://localhost:4000/api/v1/blog/singleblog/${id}`,
+                    `${BACKEND_APP_URL}/api/v1/blog/singleblog/${id}`,
                     { withCredentials: true }
                 );
                 setBlog(data.blog);
