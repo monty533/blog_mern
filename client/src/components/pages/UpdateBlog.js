@@ -25,6 +25,43 @@ const UpdateBlog = () => {
     const [title, setTitle] = useState("");
     const [published, setPublished] = useState(true);
 
+    const mainImagePreviewHandler = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setMainImagePreview(reader.result);
+            setMainImage(file);
+        };
+    };
+    const paraOneImagePreviewHandler = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setParaOneImagePreview(reader.result);
+            setParaOneImage(file);
+        };
+    };
+    const paraTwoImagePreviewHandler = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setParaTwoImagePreview(reader.result);
+            setParaTwoImage(file);
+        };
+    };
+    const paraThreeImagePreviewHandler = (e) => {
+        const file = e.target.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+            setParaThreeImagePreview(reader.result);
+            setParaThreeImage(file);
+        };
+    };
+
     useEffect(() => {
         const fetchBlog = async () => {
             try {
@@ -45,8 +82,7 @@ const UpdateBlog = () => {
                 data.blog.paraTwoImage && setParaTwoImage(data.blog.paraTwoImage.url);
                 setParaThreeTitle(data.blog.paraThreeTitle);
                 setParaThreeDescription(data.blog.paraThreeDescription);
-                data.blog.paraThreeImage &&
-                    setParaThreeImage(data.blog.paraThreeImage.url);
+                data.blog.paraThreeImage && setParaThreeImage(data.blog.paraThreeImage.url);
             } catch (error) {
                 console.log(error);
             }
@@ -60,7 +96,6 @@ const UpdateBlog = () => {
         updatedBlog.append("title", title);
         updatedBlog.append("intro", intro);
         updatedBlog.append("category", category);
-        console.log(published);
         updatedBlog.append("published", published);
         updatedBlog.append("mainImage", mainImage);
         if (paraOneTitle && paraOneTitle.length !== 0) {
@@ -107,7 +142,10 @@ const UpdateBlog = () => {
             const { data } = await axios.put(
                 `http://localhost:4000/api/v1/blog/update/${id}`,
                 updatedBlog,
-                { withCredentials: true }
+                {
+                    withCredentials: true,
+                    headers: { "Content-Type": "multipart/form-data" },
+                }
             );
             toast.success(data.message);
         } catch (error) {
@@ -115,42 +153,6 @@ const UpdateBlog = () => {
         }
     };
 
-    const mainImagePreviewHandler = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            setMainImagePreview(reader.result);
-            setMainImage(file);
-        };
-    };
-    const paraOneImagePreviewHandler = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            setParaOneImagePreview(reader.result);
-            setParaOneImage(file);
-        };
-    };
-    const paraTwoImagePreviewHandler = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            setParaTwoImagePreview(reader.result);
-            setParaTwoImage(file);
-        };
-    };
-    const paraThreeImagePreviewHandler = (e) => {
-        const file = e.target.files[0];
-        const reader = new FileReader();
-        reader.readAsDataURL(file);
-        reader.onload = () => {
-            setParaThreeImagePreview(reader.result);
-            setParaThreeImage(file);
-        };
-    };
 
     const { mode } = useContext(Context);
 

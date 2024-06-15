@@ -94,7 +94,7 @@ const CreateBlog = () => {
         if (paraThreeImage) {
             formData.append("paraThreeImage", paraThreeImage);
         }
-
+        
         try {
             const { data } = await axios.post(
                 "http://localhost:4000/api/v1/blog/post",

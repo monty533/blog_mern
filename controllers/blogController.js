@@ -181,6 +181,7 @@ export const updateBlog = catchAsyncErrors(async (req, res, next) => {
     paraThreeDescription: req.body.paraThreeDescription,
     published: req.body.published,
   };
+
   if (req.files) {
     const { mainImage, paraOneImage, paraTwoImage, paraThreeImage } = req.files;
     const allowedFormats = ["image/png", "image/jpeg", "image/webp"];

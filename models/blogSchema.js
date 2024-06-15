@@ -83,6 +83,10 @@ const blogSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  createdOn: {
+    type: Date,
+    default: Date.now,
+  },
 });
 
 export const Blog = mongoose.model("Blog", blogSchema);
