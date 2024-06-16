@@ -48,7 +48,7 @@ const Navbar = () => {
         >
             <nav>
                 <div className="logo">
-                    Alpha<span>Blog</span>
+                    Bloging<span>Beats</span>
                 </div>
                 <div className={show ? "links show" : "links"}>
                     <ul>
@@ -64,7 +64,7 @@ const Navbar = () => {
                         </li>
                         <li>
                             <Link to={"/authors"} onClick={handleNavbar}>
-                                ALL AUTHORS
+                                AUTHORS
                             </Link>
                         </li>
                         <li>
