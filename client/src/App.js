@@ -21,6 +21,8 @@ export const REACT_APP_URL = process.env.REACT_URL || "http://localhost:3000"
 export const BACKEND_APP_URL = process.env.BACKEND_URL || "http://localhost:4000"
 // end
 console.log('BACKEND_APP_URL', BACKEND_APP_URL);
+console.log('REACT_APP_URL', REACT_APP_URL);
+
 const App = () => {
   const { setUser, setIsAuthenticated, setBlogs } =
     useContext(Context);

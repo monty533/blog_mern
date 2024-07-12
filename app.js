@@ -11,10 +11,12 @@ import fileUpload from "express-fileupload";
 const app = express();
 dotenv.config();
 
+dbConnection();
+
 app.use(
   cors(
     {
-      origin: [process.env.FRONTEND_URL],
+      origin: ['https://blog-mern-prod.onrender.com', process.env.FRONTEND_URL],
       methods: ["GET", "PUT", "DELETE", "POST"],
       credentials: true,
     }
@@ -37,7 +39,6 @@ app.use(
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
 
-dbConnection();
 
 app.use(errorMiddleware);
 
