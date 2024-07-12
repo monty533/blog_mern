@@ -36,7 +36,7 @@ const App = () => {
         setUser(data.user);
         setIsAuthenticated(true);
       } catch (error) {
-        console.log(error);
+        console.log('error aaya h', error);
         setIsAuthenticated(false);
         setUser({});
       }
