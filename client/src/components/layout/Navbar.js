@@ -48,7 +48,10 @@ const Navbar = () => {
         >
             <nav>
                 <div className="logo">
-                    Bloging<span>Beats</span>
+                    {/* Bloging<span>Beats</span> */}
+                    <Link to={"/"} onClick={handleNavbar}>
+                        Bloging Beats
+                    </Link>
                 </div>
                 <div className={show ? "links show" : "links"}>
                     <ul>

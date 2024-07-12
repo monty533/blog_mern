@@ -7,12 +7,6 @@ import { errorMiddleware } from "./middlewares/error.js";
 import userRouter from "./routes/userRouter.js";
 import blogRouter from "./routes/blogRouter.js";
 import fileUpload from "express-fileupload";
-import { fileURLToPath } from 'url';
-import path from "path";
-
-// Define __dirname
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 dotenv.config();
@@ -39,11 +33,6 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, './client/build')))
-
-app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, './client/build/index.html'))
-})
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/blog", blogRouter);
